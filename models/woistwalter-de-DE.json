@@ -1,0 +1,134 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "wo ist walter",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "WhatHappenedIntent",
+                    "slots": [],
+                    "samples": [
+                        "was ist passiert",
+                        "sag mir was los ist",
+                        "was gibt es neues",
+                        "was ist los"
+                    ]
+                },
+                {
+                    "name": "WhatHappenedToIntent",
+                    "slots": [
+                        {
+                            "name": "Name",
+                            "type": "LIST_OF_NAMES"
+                        }
+                    ],
+                    "samples": [
+                        "Was gibt es neues über {Name}",
+                        "Erzähle über {Name}",
+                        "Wie geht es {Name}",
+                        "Was hat {Name} erlebt",
+                        "Was macht {Name}",
+                        "{Name}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "LIST_OF_NAMES",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Johanna"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Alaa"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Christian"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Marcel"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "WhatHappenedToIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.213528561722"
+                    },
+                    "slots": [
+                        {
+                            "name": "Name",
+                            "type": "LIST_OF_NAMES",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.213528561722.267350466452"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.213528561722",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Ich erzähle dir etwas über {Name}"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.213528561722.267350466452",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Wie heißt die Person, über die ich dir etwas erzählen soll?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Bitte sage den Namen"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Über wen möchtest du etwas wissen?"
+                    }
+                ]
+            }
+        ]
+    }
+}
